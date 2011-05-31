@@ -26,6 +26,9 @@ gem 'mongrel'
 gem 'haml'
 gem 'sass'
 gem 'compass'
+gem 'authlogic'
+gem 'formtastic'
+gem 'rake', '~> 0.8.7'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
