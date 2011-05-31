@@ -25,7 +25,7 @@ gem 'mongrel'
 # gem 'aws-s3', :require => 'aws/s3'
 gem 'haml'
 gem 'sass'
-gem 'compass'
+gem "compass", ">= 0.11.1"
 gem 'authlogic'
 gem 'formtastic'
 gem 'rake', '~> 0.8.7'

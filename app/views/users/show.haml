@@ -1,0 +1,21 @@
+%h2 #{@user.name}
+
+.user_meals
+  Hosted Meals (#{@user.hosted_meals.length})
+  .user_meals_list
+    - if @user.hosted_meals.length == 0
+      None so far...
+    - else
+      %ol
+      - @user.hosted_meals.each do |meal|
+        = link_to "#{meal.name}", meal
+
+.user_meals
+  Attended meals (#{@user.attended_meals.length})
+  .user_meals_list
+    - if @user.attended_meals.length == 0
+      None so far...
+    - else
+      %ol
+      - @user.attended_meals.each do |meal|
+        = link_to "#{meal.name}", meal

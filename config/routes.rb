@@ -1,4 +1,16 @@
 Eathckr::Application.routes.draw do
+  
+  match 'login' => 'user_sessions#new'
+  match 'logout' => 'user_sessions#destroy'
+  match 'signup' => 'users#new'
+  
+  match 'about' => 'site#about'
+  match 'welcome' => 'site#welcome'
+  
+  resources :meals
+  resources :users, :except => [:index]
+  resources :user_sessions, :only => [:new, :create, :destroy]
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -49,6 +61,8 @@ Eathckr::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
+  
+  root :to => "meals#index"
 
   # See how all your routes lay out with "rake routes"
 

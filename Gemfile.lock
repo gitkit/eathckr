@@ -94,7 +94,7 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic
-  compass
+  compass (>= 0.11.1)
   formtastic
   haml
   mongrel

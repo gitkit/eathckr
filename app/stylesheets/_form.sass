@@ -1,0 +1,74 @@
+form
+  ol
+    li
+      +clearfix
+      width: $label-width + $input-width + 40px
+      margin: 0 auto 7px
+      &.boolean
+        label
+          padding-left: $label-width + 22px
+          input
+            margin-right: 7px
+  label, textarea, input[type=text], input[type=email], input[type=password]
+    padding: 4px 6px  
+  label
+    display: block
+    float: left
+    margin-right: 10px
+    width: $label-width
+  .checkboxes
+    float: right
+    width: 268px
+  label.checkbox
+    +inline-block
+    width: 130px
+    float: none
+    margin: 0 0 5px 0 
+    padding: 0
+    &[data-important=true]
+      width: 300px
+      font-weight: bold
+  .ui-slider
+    float: right
+    margin: 0px 12px 10px
+    width: 253px
+  .slider_value
+    float: right
+    margin: 3px 0px
+    width: 245px
+  input[type=text], input[type=email], input[type=password], textarea
+    +serif
+    font-size: 1em
+    margin: 2px 0
+    border: 1px solid #888
+    width: $input-width
+  input.short
+    width: 120px
+  input[type=submit]
+    +serif
+    margin-left: $label-width + 10px + 12px
+    font-size: 1em
+    background-color: #eee
+    border: 1px solid
+    +border-radius(7px)
+    cursor: pointer
+    padding: 5px 7px
+    &:hover 
+      background-color: #f8f8f8
+  p.inline-errors
+    color: $fail-color
+    +sans
+    font-size: 0.8em
+    margin: 3px 0 0 $label-width + 10px + 12px
+  span.required
+    padding-left: 3px
+    color: #999
+    font-size: 0.8em
+    +sans
+
+.hidden_form
+  display: none
+  margin: 0
+  padding: 0
+  form input
+    margin: 0
