@@ -1,6 +1,5 @@
 #{meal.host.name} is hosting
 %strong= link_to meal.name, meal
-.small
-  = meal.cuisine
-  &middot;
-  = meal.time
+
+= render 'preview_details_1', :meal => meal
+= render 'preview_details_2', :meal => meal

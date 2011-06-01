@@ -1,0 +1,6 @@
+.preview_details.line_2
+  #{ meal.available_seats_str } available.
+  - if meal.guests_for_threshold > 0
+    Need #{ meal.guests_for_threshold_str } to have meal.
+  - else
+    The meal is on!

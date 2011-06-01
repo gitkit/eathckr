@@ -10,7 +10,9 @@
   - else
     %ol
       - @user.hosted_meals.each do |meal|
-        %li= link_to meal.name, meal
+        %li
+          = link_to meal.name, meal
+          = render 'preview_details_2', :meal => meal
 
 %ol.sidebar.meals_to_attend
   %h4 Meals you're attending
@@ -19,7 +21,9 @@
   - else
     %ol
       - @user.attending_meals.each do |meal|
-        %li= link_to meal.name, meal
+        %li
+          = link_to meal.name, meal
+          = render 'preview_details_1', :meal => meal
   
 .unregistered_meals
   %h4 Upcoming meals in your neighborhood
