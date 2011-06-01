@@ -9,7 +9,6 @@ class Meal < ActiveRecord::Base
   
   validate :more_seats_than_min_guests
   validate :try_to_parse_time
-  before_save :parse_time
 
   attr_accessor :time_str
   
@@ -38,13 +37,9 @@ class Meal < ActiveRecord::Base
   
   private
   
-    def parse_time
-      self.time = try_to_parse_time
-    end
-  
     def try_to_parse_time
       begin
-        DateTime.parse(self.time_str)
+        self.time = DateTime.parse(self.time_str)
       rescue
         errors.add(:time_str, "Sorry, we couldn't interpret this time.")
       end
