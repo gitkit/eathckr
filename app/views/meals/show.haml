@@ -38,7 +38,7 @@
       cancel meal
 
   - else
-    = form_for @attendance, :url => attend_meal_url do |f|
+    = form_for @attendance, :url => attend_meal_url, :html => { :method => :post } do |f|
       %fieldset.attendance_info
         - if @attendance.id
           You are attending with a party of  

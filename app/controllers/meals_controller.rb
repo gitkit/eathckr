@@ -45,7 +45,6 @@ class MealsController < ApplicationController
   def attend
     @user = current_user
     if update_attendance
-      flash[:win] = "We have updated your reservation."
       redirect_to @meal
     else
       flash.now[:fail] = "Whoops--we couldn't save your reservation. Please try again."
@@ -64,17 +63,14 @@ class MealsController < ApplicationController
     
     def update_attendance
       if @attendance = @meal.attendances.find_by_user_id(@user)
-        if num_attending == 0
-          @attendance.destroy # && @meal.save
-        else
-          @attendance.num_attending = params[:num_attending]
-          @attendance.save
-        end
+        @attendance.destroy
+        flash[:win] = "Your reservation has been cancelled."
       else
         @attendance = @user.attendances.build(:meal_id => @meal, 
                                               :kind => 'guest', 
                                               :num_attending => params[:num_attending])
-        @attendance.save # && @user.save -- why?
+        @attendance.save
+        flash[:win] = "Your reservation has been saved."
       end
     end
   
