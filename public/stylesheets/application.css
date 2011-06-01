@@ -514,7 +514,7 @@ ol.meals li {
 /* line 42, ../../app/stylesheets/_meals.sass */
 .seats {
   font-size: 1.5em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 /* line 44, ../../app/stylesheets/_meals.sass */
 .seats .num_seats {
@@ -523,53 +523,71 @@ ol.meals li {
 }
 
 /* line 49, ../../app/stylesheets/_meals.sass */
+.remaining_seats {
+  margin-bottom: 1em;
+}
+
+/* line 51, ../../app/stylesheets/_meals.sass */
+.guest_threshold {
+  font-weight: bold;
+}
+/* line 53, ../../app/stylesheets/_meals.sass */
+.guest_threshold.neg {
+  color: #bf0432;
+}
+/* line 55, ../../app/stylesheets/_meals.sass */
+.guest_threshold.pos {
+  color: #279412;
+}
+
+/* line 60, ../../app/stylesheets/_meals.sass */
 .reservation {
   font-size: 1.1em;
 }
 
-/* line 52, ../../app/stylesheets/_meals.sass */
+/* line 63, ../../app/stylesheets/_meals.sass */
 table.details {
   margin: 2em auto;
   width: 90%;
   border-collapse: collapse;
 }
-/* line 56, ../../app/stylesheets/_meals.sass */
+/* line 67, ../../app/stylesheets/_meals.sass */
 table.details td {
   width: 50%;
   text-align: center;
   padding: 10px;
   border: none;
 }
-/* line 61, ../../app/stylesheets/_meals.sass */
+/* line 72, ../../app/stylesheets/_meals.sass */
 table.details td:first-child {
   border-right: 1px solid #888888;
 }
-/* line 63, ../../app/stylesheets/_meals.sass */
+/* line 74, ../../app/stylesheets/_meals.sass */
 table.details tr:first-child td {
   border-bottom: 1px solid #888888;
 }
-/* line 65, ../../app/stylesheets/_meals.sass */
+/* line 76, ../../app/stylesheets/_meals.sass */
 table.details .det-label {
   font-weight: bold;
 }
-/* line 67, ../../app/stylesheets/_meals.sass */
+/* line 78, ../../app/stylesheets/_meals.sass */
 table.details .det {
   font-style: italic;
 }
 
-/* line 70, ../../app/stylesheets/_meals.sass */
+/* line 81, ../../app/stylesheets/_meals.sass */
 .manage {
   font-style: italic;
   margin-bottom: 1em;
 }
 
-/* line 74, ../../app/stylesheets/_meals.sass */
+/* line 85, ../../app/stylesheets/_meals.sass */
 ol.guest_list {
   margin-top: 1em;
   display: none;
 }
 
-/* line 78, ../../app/stylesheets/_meals.sass */
+/* line 89, ../../app/stylesheets/_meals.sass */
 .attendance_info {
   background-color: #eeeeee;
   padding: 15px;

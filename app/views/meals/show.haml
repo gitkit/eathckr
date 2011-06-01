@@ -27,7 +27,16 @@
     
   .seats
     %span.num_seats= @meal.available_seats_str
+    
     available
+  
+  .remaining_seats
+    - if @meal.guests_for_threshold > 0
+      need
+      %span.guest_threshold.neg #{ @meal.guests_for_threshold_str }
+      for meal to take place
+    - else
+      %span.guest_threshold.pos The meal is on!
     
   - if @meal.host == @user
     .attendance_info

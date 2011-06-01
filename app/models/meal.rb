@@ -31,6 +31,16 @@ class Meal < ActiveRecord::Base
     "#{s} seats"
   end
   
+  def guests_for_threshold
+    self.min_guests - self.taken_seats
+  end
+  
+  def guests_for_threshold_str
+    g = self.guests_for_threshold
+    return '1 more guest' if g == 1
+    "#{g} more guests"
+  end
+  
   def guest_attendances
     self.attendances.reject{ |a| a.user == self.host}
   end

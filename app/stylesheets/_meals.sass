@@ -44,7 +44,18 @@ ol.meals
   .num_seats
     font-size: 1.5em
     font-style: italic
+  margin-bottom: 0.5em
+
+.remaining_seats
   margin-bottom: 1em
+.guest_threshold
+  font-weight: bold
+  &.neg
+    color: $fail-color
+  &.pos
+    color: $win-color
+    
+
 
 .reservation
   font-size: 1.1em
