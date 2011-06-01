@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
 
   before_filter :require_user
-  before_filter :find_meal, :only => [:edit, :update, :show, :attend]
+  before_filter :find_meal, :only => [:edit, :update, :show, :attend, :update_attendance]
 
   def index
     @user = current_user
@@ -66,7 +66,7 @@ class MealsController < ApplicationController
         @attendance.destroy
         flash[:win] = "Your reservation has been cancelled."
       else
-        @attendance = @user.attendances.build(:meal_id => @meal, 
+        @attendance = @user.attendances.build(:meal_id => @meal.id, 
                                               :kind => 'guest', 
                                               :num_attending => params[:num_attending])
         @attendance.save

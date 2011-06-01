@@ -16,8 +16,10 @@ http_path = "/"
 
 preferred_syntax = :sass
 
-project_path = Compass::AppIntegration::Rails.root
-environment  = Compass::AppIntegration::Rails.env
+if Rails.env == 'production'
+  project_path = Compass::AppIntegration::Rails.root
+  environment  = Compass::AppIntegration::Rails.env
 
-css_dir   = 'tmp/stylesheets'
-sass_dir  = 'app/views/stylesheets'
+  css_dir   = 'tmp/stylesheets'
+  sass_dir  = 'app/views/stylesheets'
+end
