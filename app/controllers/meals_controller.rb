@@ -1,13 +1,16 @@
 class MealsController < ApplicationController
 
   before_filter :require_user
-  before_filter :find_meal, :only => [:edit, :update, :show]
+  before_filter :find_meal, :only => [:edit, :update, :show, :attend]
 
   def index
     @user = current_user
   end
   
   def show
+    @user = current_user
+    @attendance = @meal.attendances.find_by_user_id(@user) || 
+      Attendance.new(:user_id => @user, :meal_id => @meal)
   end
   
   def new
@@ -37,7 +40,17 @@ class MealsController < ApplicationController
       flash.now[:fail] = "Whoops--there's a problem saving your meal."
       render :edit
     end
-    
+  end
+  
+  def attend
+    @user = current_user
+    if update_attendance
+      flash[:win] = "We have updated your reservation."
+      redirect_to @meal
+    else
+      flash.now[:fail] = "Whoops--we couldn't save your reservation. Please try again."
+      render :show
+    end
   end
   
   def destroy
@@ -47,6 +60,22 @@ class MealsController < ApplicationController
   
     def find_meal
       @meal = Meal.find(params[:id])
+    end
+    
+    def update_attendance
+      if @attendance = @meal.attendances.find_by_user_id(@user)
+        if num_attending == 0
+          @attendance.destroy # && @meal.save
+        else
+          @attendance.num_attending = params[:num_attending]
+          @attendance.save
+        end
+      else
+        @attendance = @user.attendances.build(:meal_id => @meal, 
+                                              :kind => 'guest', 
+                                              :num_attending => params[:num_attending])
+        @attendance.save # && @user.save -- why?
+      end
     end
   
 end

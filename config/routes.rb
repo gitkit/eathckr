@@ -7,7 +7,12 @@ Eathckr::Application.routes.draw do
   match 'about' => 'site#about'
   match 'welcome' => 'site#welcome'
   
-  resources :meals
+  resources :meals do
+    member do
+      post :attend
+    end
+  end
+  
   resources :users, :except => [:index]
   resources :user_sessions, :only => [:new, :create, :destroy]
   

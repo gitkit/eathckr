@@ -17,9 +17,61 @@ ol.sidebar
 ol.meals
   li
     list-style-type: disc
-    margin-left: 1em
+    margin: 0 0 0.5em 1em
+
 .meal_preview
   .small
     +sans
     color: #555
     font-size: 0.8em
+
+#meal_full
+  text-align: center
+  
+.meal_host
+  font-size: 1em
+  text-align: center
+  margin-bottom: 1em
+
+.meal_name
+  font-size: 2em
+  font-weight: bold
+  text-align: center
+  margin-bottom: 0.5em
+
+.seats
+  font-size: 1.5em
+  .num_seats
+    font-size: 1.5em
+    font-style: italic
+  margin-bottom: 1em
+
+.reservation
+  font-size: 1.1em
+  
+table.details
+  margin: 2em auto
+  width: 90%
+  border-collapse: collapse
+  td
+    width: 50%
+    text-align: center
+    padding: 10px
+    border: none
+  td:first-child
+    border-right: 1px solid #888
+  tr:first-child td
+    border-bottom: 1px solid #888
+  .det-label
+    font-weight: bold
+  .det
+    font-style: italic
+  
+.manage
+  font-style: italic
+  margin-bottom: 1em
+
+
+.attendance_info
+  background-color: #eee
+  padding: 15px

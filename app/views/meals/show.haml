@@ -1,26 +1,56 @@
+#meal_full
+  .meal_host
+    - if @meal.host == @user
+      #{ link_to 'You', @user } are hosting...
+    - else
+      #{ link_to @meal.host.name, @meal.host } is hosting...
 
-%h3 #{@meal.host.name} is hosting a meal
+  .meal_name= @meal.name
 
-%h2= @meal.name
+  %table.details
+    %tbody
+      %tr
+        %td      
+          .det-label Where
+          .det= @meal.location
+        %td
+          .det-label When
+          .det= @meal.time
+    
+      %tr
+        %td
+          .det-label Cuisine
+          .det= @meal.cuisine
+        %td
+          .det-label Details
+          .det= @meal.description || "No worries"
+    
+  .seats
+    %span.num_seats= @meal.available_seats
+    seats available
+    
+  - if @meal.host == @user
+    .attendance_info
+      view guest list
+      &middot;
+      = link_to 'edit details', edit_meal_url(@meal)
+      &middot;
+      cancel meal
 
-.seats
-  = @meal.available_seats
-  seats available
-
-.cuisine
-  Cuisine:
-  = @meal.cuisine
-.time= @meal.time
-
-- if @meal.users.includes(current_user)
-  .attending &#10003; You are attending!
-  - if @meal.host == current_user
-    Cancel this meal [coming soon] / 
-    = link_to 'edit meal', edit_meal_url(@meal)
   - else
-    I don't want to attend any more [coming soon]
-- else
-  = link_to "I want to go to this meal!"
-  
+    = form_for @attendance, :url => attend_meal_url do |f|
+      %fieldset.attendance_info
+        - if @attendance.id
+          You are attending with a party of  
+          %strong= @attendance.num_attending.to_s + '.'
+          %input{ :type => :submit, :value => "Cancel reservation »".html_safe, :class => "linkish unbutton" }
+        - elsif @meal.available_seats <= 0
+          Sorry, there are no more seats left.
+        - else
+          Reserve a place for
+          %input{ :type => :text, :name => :num_attending }
+          guest(s).
+          %input{ :type => :submit, :value => "Go »".html_safe, :class => "linkish unbutton" }
 
-%div (yep this page looks crappy, haven't gotten around to designing it up yet)
+  
+  
