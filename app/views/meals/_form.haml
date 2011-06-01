@@ -8,7 +8,7 @@
     = f.input :location, :label => "Where is it?", :hint => "We won't show anyone your address until they've paid for a reservation."
     = f.input :time_str, :label => "When is it?", :input_html => {:value => @meal.time_str || @meal.time}
     %li
-      %label Cost per person
+      %label Price per guest
       %strong $10
       \= $8 for you + $2 for #{hckr_logo}
     = f.input :description, :label => "Any other info to share <br /> with your guests?".html_safe
