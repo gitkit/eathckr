@@ -38,7 +38,7 @@
       cancel meal
       
       %ol.guest_list
-        - @meal.attendances.each do |a|
+        - @meal.attendances.reject{ |a| a.user == @user }.each do |a|
           %li= "#{a.user.name} (#{a.num_attending.to_s})"
 
   - else
