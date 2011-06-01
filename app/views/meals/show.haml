@@ -23,22 +23,25 @@
           .det= @meal.cuisine
         %td
           .det-label Details
-          .det= @meal.description || "No worries"
+          .det= @meal.description || "No other details provided."
     
   .seats
-    %span.num_seats= @meal.available_seats
-    seats available
+    %span.num_seats= @meal.available_seats_str
+    available
     
   - if @meal.host == @user
     .attendance_info
-      %span.linkish.expand_guest_list show guest list
+      - if @meal.guest_attendances.blank?
+        no guests yet
+      - else
+        %span.linkish.expand_guest_list show guest list
       &middot;
       = link_to 'edit details', edit_meal_url(@meal)
       &middot;
       cancel meal
       
       %ol.guest_list
-        - @meal.attendances.reject{ |a| a.user == @user }.each do |a|
+        - @meal.guest_attendances.each do |a|
           %li= "#{a.user.name} (#{a.num_attending.to_s})"
 
   - else

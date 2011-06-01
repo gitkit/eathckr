@@ -20,6 +20,16 @@ class Meal < ActiveRecord::Base
     self.total_seats - self.taken_seats
   end
   
+  def available_seats_str
+    s = self.available_seats
+    return '1 seat' if s == 1
+    "#{s} seats"
+  end
+  
+  def guest_attendances
+    self.attendances.reject{ |a| a.user == self.host}
+  end
+  
   private
   
     def parse_time
