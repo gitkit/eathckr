@@ -1,2 +1,13 @@
+- lots of validation issues
+  - especially with attendances
+  - also with thresholds
 - Repeating events
-- Locations... one eathckr per city
+- Locations
+  - set up location DB ahead of time.
+  - People and Meals are locatable
+  - show walking/driving directions
+  - email 24h before with location
+- payments
+  - $10n per meal
+  - $8n for owner, $2n for eathckr 
+  - use paypal

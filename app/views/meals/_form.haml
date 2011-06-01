@@ -1,10 +1,16 @@
 = semantic_form_for @meal do |f|
+  = f.semantic_errors
   = f.inputs do
     = f.input :name, :label => "Give your meal a name"
     = f.input :cuisine, :label => "What sort of cuisine?"
-    = f.input :total_seats, :label => "How many people can come,<br />besides yourself?".html_safe
-    = f.input :location, :label => "Where is it?"
+    = f.input :total_seats, :label => "How many people can come, besides yourself?".html_safe
+    = f.input :min_guests, :label => "What's the minimum number of people you need to attend?".html_safe, :hint => "We'll notify guests that the meal has been cancelled and refund their money<br />if not enough people show up. It's okay to leave this at 1.".html_safe
+    = f.input :location, :label => "Where is it?", :hint => "We won't show anyone your address until they've paid for a reservation."
     = f.input :time_str, :label => "When is it?", :input_html => {:value => @meal.time_str || @meal.time}
+    %li
+      %label Cost per person
+      %strong $10
+      \= $8 for you + $2 for #{hckr_logo}
     = f.input :description, :label => "Any other info to share <br /> with your guests?".html_safe
   = f.buttons do
     = f.commit_button "Let's do it &raquo;".html_safe

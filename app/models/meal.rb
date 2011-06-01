@@ -3,10 +3,13 @@ class Meal < ActiveRecord::Base
   has_many :attendances, :dependent => :destroy
   has_many :users, :through => :attendances, :uniq => true
   
-  before_save :parse_time
+  # before_save :parse_time
+  validate :more_seats_than_min_guests
+  validate :parse_time
+  validates_presence_of :name, :total_seats, :location, :time, :cuisine, :message => "You have to fill this out!"
   
   attr_accessor :time_str
-
+  
   def host
     self.attendances.where(:kind => 'host').first.user
   end
@@ -33,7 +36,17 @@ class Meal < ActiveRecord::Base
   private
   
     def parse_time
-      self.time = DateTime.parse(self.time_str)
+      begin
+        self.time = DateTime.parse(self.time_str)
+      rescue
+        errors.add(:time_str, "Sorry, we couldn't interpret this time.")
+      end
+    end
+    
+    def more_seats_than_min_guests
+      if self.total_seats && self.total_seats < self.min_guests
+        errors.add(:min_guests, "You need to have more available seats than the minumum number of guests!")
+      end
     end
     
 end

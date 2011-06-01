@@ -7,8 +7,8 @@
       None right now...
     - else
       %ol
-      - @user.hosted_meals.each do |meal|
-        = link_to "#{meal.name}", meal
+        - @user.hosted_meals.each do |meal|
+          %li= link_to "#{meal.name}", meal
 
 .user_meals
   Attended meals (#{@user.attended_meals.length})

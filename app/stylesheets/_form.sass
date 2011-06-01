@@ -56,11 +56,15 @@ form
     padding: 5px 7px
     &:hover 
       background-color: #f8f8f8
-  p.inline-errors
-    color: $fail-color
+  p.inline-hints, p.inline-errors
     +sans
     font-size: 0.8em
-    margin: 3px 0 0 $label-width + 10px + 12px
+    color: #888
+    text-align: right
+    line-height: 140%
+    margin-top: 5px
+  p.inline-errors
+    color: $fail-color
   span.required
     padding-left: 3px
     color: #999
@@ -77,8 +81,17 @@ form input[type=submit].unbutton
   background: none
   margin-left: 5px
   
-input#meal_total_seats
-  width: 25px
+li.numeric
+  label
+    width: 450px
+  input
+    width: 25px
+  
+li.error
+  background-color: #FFE5E5
+  padding-top: 5px
+  p
+    padding-right: 10px
 
 form.button_to
   +inline-block
