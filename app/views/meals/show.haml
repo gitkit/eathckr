@@ -31,11 +31,15 @@
     
   - if @meal.host == @user
     .attendance_info
-      view guest list
+      %span.linkish.expand_guest_list show guest list
       &middot;
       = link_to 'edit details', edit_meal_url(@meal)
       &middot;
       cancel meal
+      
+      %ol.guest_list
+        - @meal.attendances.each do |a|
+          %li= "#{a.user.name} (#{a.num_attending.to_s})"
 
   - else
     = form_for @attendance, :url => attend_meal_url, :html => { :method => :post } do |f|

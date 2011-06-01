@@ -543,7 +543,13 @@ table.details .det {
   margin-bottom: 1em;
 }
 
-/* line 75, ../../app/stylesheets/_meals.sass */
+/* line 74, ../../app/stylesheets/_meals.sass */
+ol.guest_list {
+  margin-top: 1em;
+  display: none;
+}
+
+/* line 78, ../../app/stylesheets/_meals.sass */
 .attendance_info {
   background-color: #eeeeee;
   padding: 15px;
