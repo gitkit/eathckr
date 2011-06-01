@@ -12,6 +12,7 @@ class Meal < ActiveRecord::Base
   end
   
   def taken_seats
+    return 0 if self.attendances.blank?
     self.attendances.map(&:num_attending).reduce(:+) - 1 # Minus one for the host
   end
   
