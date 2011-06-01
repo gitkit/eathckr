@@ -1,0 +1,10 @@
+= semantic_form_for @meal do |f|
+  = f.inputs do
+    = f.input :name, :label => "Give your meal a name"
+    = f.input :cuisine, :label => "What sort of cuisine?"
+    = f.input :total_seats, :label => "How many people can come,<br />besides yourself?".html_safe
+    = f.input :location, :label => "Where is it?"
+    = f.input :time_str, :label => "When is it?", :input_html => {:value => @meal.time_str || @meal.time}
+    = f.input :description, :label => "Any other info to share <br /> with your guests?".html_safe
+  = f.buttons do
+    = f.commit_button "Let's do it &raquo;".html_safe

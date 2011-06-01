@@ -3,8 +3,8 @@
 .user_meals
   Hosted Meals (#{@user.hosted_meals.length})
   .user_meals_list
-    - if @user.hosted_meals.length == 0
-      None so far...
+    - if @user.hosted_meals.empty?
+      None right now...
     - else
       %ol
       - @user.hosted_meals.each do |meal|
@@ -13,8 +13,8 @@
 .user_meals
   Attended meals (#{@user.attended_meals.length})
   .user_meals_list
-    - if @user.attended_meals.length == 0
-      None so far...
+    - if @user.attended_meals.empty?
+      None right now...
     - else
       %ol
       - @user.attended_meals.each do |meal|

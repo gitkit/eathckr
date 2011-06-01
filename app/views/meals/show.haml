@@ -1,0 +1,26 @@
+
+%h3 #{@meal.host.name} is hosting a meal
+
+%h2= @meal.name
+
+.seats
+  = @meal.available_seats
+  seats available
+
+.cuisine
+  Cuisine:
+  = @meal.cuisine
+.time= @meal.time
+
+- if @meal.users.includes(current_user)
+  .attending &#10003; You are attending!
+  - if @meal.host == current_user
+    Cancel this meal [coming soon] / 
+    = link_to 'edit meal', edit_meal_url(@meal)
+  - else
+    I don't want to attend any more [coming soon]
+- else
+  = link_to "I want to go to this meal!"
+  
+
+%div (yep this page looks crappy, haven't gotten around to designing it up yet)

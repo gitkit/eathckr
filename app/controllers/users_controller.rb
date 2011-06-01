@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create  
     @user = User.new(params[:user])  
     if @user.save  
-      flash[:win] = "Registration successful."  
+      flash[:win] = "Registration successful. Welcome to eathckr!"  
       redirect_to root_url  
     else  
       flash.now[:fail] = "Ah, we couldn't register you. Try again please."
@@ -41,8 +41,10 @@ class UsersController < ApplicationController
   def show
   end
   
-  def find_user
-    @user = User.find(params[:id])
-  end
+  private
+  
+    def find_user
+      @user = User.find(params[:id])
+    end
 
 end

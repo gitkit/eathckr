@@ -10,9 +10,11 @@ body
   position: relative
 
 #content
+  +clearfix
+  padding: 1em 0
   line-height: 140%
   p
-    margin-bottom: 1em
+    margin-bottom: 0.5em
 
 #greeting
   p
@@ -28,14 +30,13 @@ body
 header
   +sans
   +clearfix
-  margin: 1em 0
+  margin: 1em 0 0
   text-align: left
   display: block
   border-bottom: 1px #555 solid
   position: relative
   a#home_link
     float: left
-    font-weight: bold
     font-size: 1.5em
     color: #222
     &:hover
@@ -46,10 +47,13 @@ header
     right: 0
     bottom: 4px
     font-size: 0.8em
-
+    
+span.hckr_logo
+  +sans
     
 h1
   font-size: 3em
+  line-height: 100%
   +serif
   margin-bottom: 10px
   a
@@ -62,7 +66,7 @@ footer
   +sans
   font-size: 0.7em
   color: #999
-  margin: 1.5em auto 2em
+  margin: 0 auto 2em
   border-top: 1px solid #777
   padding: 5px
   text-align: center
@@ -76,6 +80,8 @@ a, .linkish
   text-decoration: none
   &:hover
     text-decoration: underline
+
+
 
 .linkish
   cursor: pointer
@@ -95,12 +101,18 @@ h2
 h3
   text-align: center
   margin-bottom: 1em
+  font-size: 1.1em
+
+h4
+  font-weight: bold
+  font-size: 1.1em
+  text-align: center
+  margin-bottom: 0.5em
 
 .win, .fail
   text-align: center
   color: white
   padding: 10px
-  margin-bottom: 1em
 
 .win
   background-color: $win-color

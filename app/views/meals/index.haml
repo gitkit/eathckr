@@ -1,0 +1,32 @@
+%h2
+  = link_to "Host a meal", new_meal_url
+  &middot;
+  = link_to "Your meals", @user
+
+%ol.sidebar.your_meals
+  %h4 Meals you're hosting
+  - if @user.hosted_meals.empty?
+    You're not hosting any upcoming meals
+  - else
+    %ol
+      - @user.hosted_meals.each do |meal|
+        %li= link_to meal.name, meal
+
+%ol.sidebar.meals_to_attend
+  %h4 Meals you're attending
+  - if @user.attending_meals.empty?
+    You're not attending any upcoming meals.
+  - else
+    %ol
+      - @user.attending_meals.each do |meal|
+        %li= link_to meal.name, meal
+  
+.unregistered_meals
+  %h4 Upcoming meals in your neighborhood
+
+  - if @user.potential_meals.empty?
+    No upcoming meals.
+  - else
+    %ol.meals
+      - @user.potential_meals.each do |meal|
+        %li.meal_preview= render 'meal', :meal => meal

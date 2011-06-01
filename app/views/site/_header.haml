@@ -1,5 +1,7 @@
 %header
-  = link_to "eathckr.", root_url, :id => :home_link
+  = link_to root_url, :id => :home_link do
+    %strong eat
+    %span.hckr<> hckr
   #account_actions
     - if current_user
       = link_to "#{current_user.name}", current_user

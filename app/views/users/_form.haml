@@ -5,4 +5,4 @@
     = f.input :password, :label => "What's your password?"
     = f.input :password_confirmation, :label => "Please type your password again."
   = f.buttons do
-    = f.commit_button "#{@submit_text} &raquo;".html_safe
+    = f.commit_button "#{@submit_text.blank? ? "Submit" : @submit_text} &raquo;".html_safe

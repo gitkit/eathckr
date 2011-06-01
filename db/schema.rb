@@ -10,25 +10,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110531160236) do
+ActiveRecord::Schema.define(:version => 20110601012220) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "user_id"
     t.integer  "meal_id"
-    t.string   "type"
+    t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "num_attending", :default => 1
   end
 
   create_table "meals", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "cuisine"
-    t.integer  "total_seats"
-    t.datetime "start_time"
-    t.string   "location"
-    t.string   "description"
+    t.string   "name",                       :null => false
+    t.string   "cuisine",                    :null => false
+    t.integer  "total_seats",                :null => false
+    t.datetime "time",                       :null => false
+    t.string   "location",                   :null => false
+    t.text     "description", :limit => 255
   end
 
   create_table "users", :force => true do |t|

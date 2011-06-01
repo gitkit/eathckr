@@ -81,14 +81,17 @@ body {
 
 /* line 12, ../../app/stylesheets/_core.sass */
 #content {
+  overflow: hidden;
+  *zoom: 1;
+  padding: 1em 0;
   line-height: 140%;
 }
-/* line 14, ../../app/stylesheets/_core.sass */
+/* line 16, ../../app/stylesheets/_core.sass */
 #content p {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
-/* line 17, ../../app/stylesheets/_core.sass */
+/* line 19, ../../app/stylesheets/_core.sass */
 #greeting {
   position: absolute;
   top: 5px;
@@ -97,36 +100,35 @@ body {
   color: #888888;
   font-size: 0.7em;
 }
-/* line 18, ../../app/stylesheets/_core.sass */
+/* line 20, ../../app/stylesheets/_core.sass */
 #greeting p {
   margin-bottom: 5px;
   text-align: right;
 }
 
-/* line 28, ../../app/stylesheets/_core.sass */
+/* line 30, ../../app/stylesheets/_core.sass */
 header {
   font-family: Helvetica, Arial, Verdana, sans-serif;
   overflow: hidden;
   *zoom: 1;
-  margin: 1em 0;
+  margin: 1em 0 0;
   text-align: left;
   display: block;
   border-bottom: 1px #555555 solid;
   position: relative;
 }
-/* line 36, ../../app/stylesheets/_core.sass */
+/* line 38, ../../app/stylesheets/_core.sass */
 header a#home_link {
   float: left;
-  font-weight: bold;
   font-size: 1.5em;
   color: #222222;
 }
-/* line 41, ../../app/stylesheets/_core.sass */
+/* line 42, ../../app/stylesheets/_core.sass */
 header a#home_link:hover {
   color: #555555;
   text-decoration: none;
 }
-/* line 44, ../../app/stylesheets/_core.sass */
+/* line 45, ../../app/stylesheets/_core.sass */
 header #account_actions {
   position: absolute;
   right: 0;
@@ -135,64 +137,70 @@ header #account_actions {
 }
 
 /* line 51, ../../app/stylesheets/_core.sass */
+span.hckr_logo {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+}
+
+/* line 54, ../../app/stylesheets/_core.sass */
 h1 {
   font-size: 3em;
+  line-height: 100%;
   font-family: Georgia, Times, serif;
   margin-bottom: 10px;
 }
-/* line 55, ../../app/stylesheets/_core.sass */
+/* line 59, ../../app/stylesheets/_core.sass */
 h1 a {
   text-decoration: none;
   color: black;
 }
-/* line 58, ../../app/stylesheets/_core.sass */
+/* line 62, ../../app/stylesheets/_core.sass */
 h1 a:hover {
   text-decoration: none;
 }
 
-/* line 61, ../../app/stylesheets/_core.sass */
+/* line 65, ../../app/stylesheets/_core.sass */
 footer {
   font-family: Helvetica, Arial, Verdana, sans-serif;
   font-size: 0.7em;
   color: #999999;
-  margin: 1.5em auto 2em;
+  margin: 0 auto 2em;
   border-top: 1px solid #777777;
   padding: 5px;
   text-align: center;
 }
 
-/* line 70, ../../app/stylesheets/_core.sass */
+/* line 74, ../../app/stylesheets/_core.sass */
 #bottom_nav {
   margin-top: 2em;
   text-align: center;
 }
 
-/* line 74, ../../app/stylesheets/_core.sass */
+/* line 78, ../../app/stylesheets/_core.sass */
 a, .linkish {
   color: #1f58b5;
   text-decoration: none;
 }
-/* line 77, ../../app/stylesheets/_core.sass */
+/* line 81, ../../app/stylesheets/_core.sass */
 a:hover, .linkish:hover {
   text-decoration: underline;
 }
 
-/* line 80, ../../app/stylesheets/_core.sass */
+/* line 86, ../../app/stylesheets/_core.sass */
 .linkish {
   cursor: pointer;
 }
 
-/* line 83, ../../app/stylesheets/_core.sass */
+/* line 89, ../../app/stylesheets/_core.sass */
 strong, b {
   font-weight: bold;
 }
 
-/* line 86, ../../app/stylesheets/_core.sass */
+/* line 92, ../../app/stylesheets/_core.sass */
 em {
   font-style: italic;
 }
 
-/* line 89, ../../app/stylesheets/_core.sass */
+/* line 95, ../../app/stylesheets/_core.sass */
 h2 {
   font-size: 1.3em;
   margin: 0 0 0.5em;
@@ -200,41 +208,49 @@ h2 {
   text-align: center;
 }
 
-/* line 95, ../../app/stylesheets/_core.sass */
+/* line 101, ../../app/stylesheets/_core.sass */
 h3 {
   text-align: center;
   margin-bottom: 1em;
+  font-size: 1.1em;
 }
 
-/* line 99, ../../app/stylesheets/_core.sass */
+/* line 106, ../../app/stylesheets/_core.sass */
+h4 {
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+/* line 112, ../../app/stylesheets/_core.sass */
 .win, .fail {
   text-align: center;
   color: white;
   padding: 10px;
-  margin-bottom: 1em;
 }
 
-/* line 105, ../../app/stylesheets/_core.sass */
+/* line 117, ../../app/stylesheets/_core.sass */
 .win {
-  background-color: #2dc450;
+  background-color: #279412;
 }
 
-/* line 107, ../../app/stylesheets/_core.sass */
+/* line 119, ../../app/stylesheets/_core.sass */
 .fail {
   background-color: #bf0432;
 }
 
-/* line 110, ../../app/stylesheets/_core.sass */
+/* line 122, ../../app/stylesheets/_core.sass */
 .strong {
   font-weight: bold;
 }
 
-/* line 113, ../../app/stylesheets/_core.sass */
+/* line 125, ../../app/stylesheets/_core.sass */
 .hidden {
   display: none;
 }
 
-/* line 116, ../../app/stylesheets/_core.sass */
+/* line 128, ../../app/stylesheets/_core.sass */
 .bottom_text {
   margin: 1em 0;
   color: #666666;
@@ -245,12 +261,12 @@ h3 {
 form ol li {
   overflow: hidden;
   *zoom: 1;
-  width: 590px;
+  width: 580px;
   margin: 0 auto 7px;
 }
 /* line 8, ../../app/stylesheets/_form.sass */
 form ol li.boolean label {
-  padding-left: 322px;
+  padding-left: 312px;
 }
 /* line 10, ../../app/stylesheets/_form.sass */
 form ol li.boolean label input {
@@ -265,14 +281,15 @@ form label {
   display: block;
   float: left;
   margin-right: 10px;
-  width: 300px;
+  width: 290px;
+  line-height: 140%;
 }
-/* line 19, ../../app/stylesheets/_form.sass */
+/* line 20, ../../app/stylesheets/_form.sass */
 form .checkboxes {
   float: right;
   width: 268px;
 }
-/* line 22, ../../app/stylesheets/_form.sass */
+/* line 23, ../../app/stylesheets/_form.sass */
 form label.checkbox {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -288,24 +305,24 @@ form label.checkbox {
 form label.checkbox {
   *display: inline;
 }
-/* line 28, ../../app/stylesheets/_form.sass */
+/* line 29, ../../app/stylesheets/_form.sass */
 form label.checkbox[data-important=true] {
   width: 300px;
   font-weight: bold;
 }
-/* line 31, ../../app/stylesheets/_form.sass */
+/* line 32, ../../app/stylesheets/_form.sass */
 form .ui-slider {
   float: right;
   margin: 0px 12px 10px;
   width: 253px;
 }
-/* line 35, ../../app/stylesheets/_form.sass */
+/* line 36, ../../app/stylesheets/_form.sass */
 form .slider_value {
   float: right;
   margin: 3px 0px;
   width: 245px;
 }
-/* line 39, ../../app/stylesheets/_form.sass */
+/* line 40, ../../app/stylesheets/_form.sass */
 form input[type=text], form input[type=email], form input[type=password], form textarea {
   font-family: Georgia, Times, serif;
   font-size: 1em;
@@ -313,38 +330,38 @@ form input[type=text], form input[type=email], form input[type=password], form t
   border: 1px solid #888888;
   width: 250px;
 }
-/* line 45, ../../app/stylesheets/_form.sass */
+/* line 46, ../../app/stylesheets/_form.sass */
 form input.short {
   width: 120px;
 }
-/* line 47, ../../app/stylesheets/_form.sass */
+/* line 48, ../../app/stylesheets/_form.sass */
 form input[type=submit] {
   font-family: Georgia, Times, serif;
-  margin-left: 322px;
+  margin-left: 312px;
   font-size: 1em;
   background-color: #eeeeee;
   border: 1px solid;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  -o-border-radius: 7px;
-  -ms-border-radius: 7px;
-  -khtml-border-radius: 7px;
-  border-radius: 7px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -o-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -khtml-border-radius: 25px;
+  border-radius: 25px;
   cursor: pointer;
   padding: 5px 7px;
 }
-/* line 56, ../../app/stylesheets/_form.sass */
+/* line 57, ../../app/stylesheets/_form.sass */
 form input[type=submit]:hover {
   background-color: #f8f8f8;
 }
-/* line 58, ../../app/stylesheets/_form.sass */
+/* line 59, ../../app/stylesheets/_form.sass */
 form p.inline-errors {
   color: #bf0432;
   font-family: Helvetica, Arial, Verdana, sans-serif;
   font-size: 0.8em;
-  margin: 3px 0 0 322px;
+  margin: 3px 0 0 312px;
 }
-/* line 63, ../../app/stylesheets/_form.sass */
+/* line 64, ../../app/stylesheets/_form.sass */
 form span.required {
   padding-left: 3px;
   color: #999999;
@@ -352,13 +369,18 @@ form span.required {
   font-family: Helvetica, Arial, Verdana, sans-serif;
 }
 
-/* line 69, ../../app/stylesheets/_form.sass */
+/* line 70, ../../app/stylesheets/_form.sass */
+input#meal_total_seats {
+  width: 25px;
+}
+
+/* line 73, ../../app/stylesheets/_form.sass */
 .hidden_form {
   display: none;
   margin: 0;
   padding: 0;
 }
-/* line 73, ../../app/stylesheets/_form.sass */
+/* line 77, ../../app/stylesheets/_form.sass */
 .hidden_form form input {
   margin: 0;
 }
@@ -381,4 +403,39 @@ form span.required {
 .user_meals_list {
   float: right;
   width: 400px;
+}
+
+/* line 1, ../../app/stylesheets/_meals.sass */
+.unregistered_meals {
+  border: 1px solid #888888;
+  width: 400px;
+  padding: 15px;
+}
+
+/* line 6, ../../app/stylesheets/_meals.sass */
+ol.sidebar {
+  padding: 10px;
+  float: right;
+  background-color: #eeeeee;
+  width: 230px;
+  margin-bottom: 1em;
+  clear: right;
+}
+
+/* line 14, ../../app/stylesheets/_meals.sass */
+.attending {
+  color: #279412;
+}
+
+/* line 18, ../../app/stylesheets/_meals.sass */
+ol.meals li {
+  list-style-type: disc;
+  margin-left: 1em;
+}
+
+/* line 22, ../../app/stylesheets/_meals.sass */
+.meal_preview .small {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  color: #555555;
+  font-size: 0.8em;
 }
