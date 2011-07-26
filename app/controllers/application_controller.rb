@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user, :current_user_session
 
+  before_filter :set_xrds_header
+    
   private  
   
     def current_user_session
@@ -19,7 +21,7 @@ class ApplicationController < ActionController::Base
     end
   
     def require_user
-      redirect_to welcome_url unless current_user
+      redirect_to login_url unless current_user
     end
   
     def require_no_user
@@ -32,6 +34,10 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
+    end
+    
+    def set_xrds_header
+      response.headers['X-XRDS-Location'] = yadis_url(:format => 'xml')
     end
 
 end

@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :find_user, :only => [:edit, :update, :show]
   
+  def user_status
+    render :json => {
+      :registered => !!User.find_by_email(params[:email]),
+      :legacy => true
+    }
+  end
   
   def new  
     @user = User.new
@@ -40,7 +46,7 @@ class UsersController < ApplicationController
   
   def show
   end
-  
+    
   private
   
     def find_user

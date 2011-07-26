@@ -1,0 +1,33 @@
+= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js", "//ajax.googleapis.com/ajax/libs/googleapis/0.0.3/googleapis.min.js"
+%script{ :type => "text/javascript", :src => "//ajax.googleapis.com/jsapi" }
+
+:javascript
+  google.load("identitytoolkit", "1.0", { packages: ["ac"] });
+
+:javascript
+  var GITkit = window.google.identitytoolkit;
+  $(function() {    
+    GITkit.setConfig({
+      developerKey: "#{ GITKIT_DEVKEY }",
+      companyName: "eathckr",
+      returnToUrl: "#{ openid_callback_url }",
+      loginUrl: "#{ user_sessions_path }",
+      logoutUrl: "#{ logout_path }",
+      signupUrl: "#{ signup_path }",
+      homeUrl: "#{ root_url }",
+      forgotUrl: "#{ forgot_password_path }",
+      // language: "en",
+      idps: ["Gmail", "Yahoo", "AOL"],
+      tryFederatedFirst: false,
+      useCachedUserStatus: false  
+    });    
+    $("#navbar").account_chooser()
+  });
+
+- if current_user
+  :javascript
+    $(function() {
+      GITkit.updateSavedAccount(#{user_data})
+      GITkit.showSavedAccount("#{current_user.email}");
+      GITkit.setConfig({ dropdownmenu: [ { "label": "Edit profile", "url": "#{edit_user_url(current_user)}" } , { "label": "Switch account", "handler": "onSwitchAccountClicked" }, { "label": "Log out", "url": "#{logout_url}", "handler": "onSignOutClicked" } ]});
+    });

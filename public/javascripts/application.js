@@ -11,3 +11,7 @@ $(document).ready(function() {
     }
   });
 });
+
+function logout() {
+  window.location = "/logout"
+}

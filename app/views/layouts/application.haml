@@ -8,6 +8,8 @@
       %script{:src => "//html5shim.googlecode.com/svn/trunk/html5.js"}
       = stylesheet_link_tag 'ie'
     = csrf_meta_tag
+    = include_gitkit_headers
+      
   %body
     = render 'site/header'
     - if flash[:win]

@@ -28,6 +28,8 @@ gem 'sass'
 gem "compass", ">= 0.11.1"
 gem 'authlogic'
 gem 'formtastic'
+gem 'json'
+gem 'rest-client'
 gem 'rake', '~> 0.8.7'
 
 # Bundle gems for the local environment. Make sure to

@@ -48,4 +48,6 @@ Eathckr::Application.configure do
   config.active_support.deprecation = :notify
 end
 
+GITKIT_DEVKEY = 'AIzaSyCwOg8gPGuN3Wte_z-qgGK2jnq2Cn7wyIg'
 
+FEDERATED_PASSWORD = '43c7f0ac0f067aec0df28856e263e9feebfaf6704a3b28707890bb290a1bf079'

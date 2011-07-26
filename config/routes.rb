@@ -1,21 +1,27 @@
 Eathckr::Application.routes.draw do
   
+  match 'welcome' => "site#welcome"
   match 'login' => 'user_sessions#new'
   match 'logout' => 'user_sessions#destroy'
   match 'signup' => 'users#new'
   
   match 'about' => 'site#about'
-  match 'welcome' => 'site#welcome'
+  match 'forgot_password' => 'site#forgot_password'
+  match 'openid_callback' => 'user_sessions#openid_callback'
+  match 'user_status' => 'users#user_status'
+  
+  match 'yadis' => 'site#yadis'
   
   resources :meals do
     member do
       post :attend
     end
   end
-  
+
   resources :users, :except => [:index]
-  resources :user_sessions, :only => [:new, :create, :destroy]
   
+  resources :user_sessions, :only => [:new, :create, :destroy]
+    
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

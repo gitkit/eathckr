@@ -2,17 +2,7 @@
   = link_to root_url, :id => :home_link do
     %strong eat
     %span.hckr<> hckr
-  #account_actions
-    - if current_user
-      = link_to "#{current_user.name}", current_user
-      &middot;
-      = link_to 'edit profile', edit_user_url(current_user)
-      &middot;
-      = link_to 'log out', logout_url
-      &middot;
-      = link_to 'host a meal', new_meal_url, :class => 'strong'
-    - else
-      = link_to "sign up", signup_url
-      or
-      = link_to "log in", login_url
-   
+  -# #account_actions
+  -#   - if current_user
+  -#     = link_to 'host a meal', new_meal_url, :class => 'strong'
+  #navbar{ :style => "padding: 0px 10px 5px 0px; float: right;" }

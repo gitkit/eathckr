@@ -1,2 +1,10 @@
 %h2 Edit your profile
-= render 'form'
+
+= semantic_form_for @user do |f|
+  = f.inputs do
+    = f.input :name, :label => 'Edit your name'
+    - unless @user.federated?
+      = f.input :password, :label => "What's your password?"
+      = f.input :password_confirmation, :label => "Please type your password again."
+  = f.buttons do
+    = f.commit_button "#{@submit_text.blank? ? "Submit" : @submit_text} &raquo;".html_safe

@@ -1,6 +1,6 @@
-- lots of validation issues
-  - especially with attendances
-  - also with thresholds
+- validation
+- cancelling events
+
 - Repeating events
 - Locations
   - set up location DB ahead of time.

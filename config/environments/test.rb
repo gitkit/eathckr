@@ -33,3 +33,7 @@ Eathckr::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+GITKIT_DEVKEY = 'development'
+
+FEDERATED_PASSWORD = '43c7f0ac0f067aec0df28856e263e9feebfaf6704a3b28707890bb290a1bf079'
