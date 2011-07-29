@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :find_user, :only => [:edit, :update, :show]
+  before_filter :find_user, :only => [:edit, :update, :show, :destroy]
   
   def user_status
     render :json => {
       :registered => !!User.find_by_email(params[:email]),
-      :legacy => true
+      :legacy => (params[:referrer] == 'federatedFail')
     }
   end
   
@@ -45,6 +45,15 @@ class UsersController < ApplicationController
   end
   
   def show
+  end
+  
+  def destroy
+    if (@user == current_user) && @user.destroy  
+      flash[:win] = "Account sucessfully deleted!"  
+    else
+      flash[:fail] = "Are you trying to delete someone else's account?"
+    end
+    redirect_to root_url
   end
     
   private

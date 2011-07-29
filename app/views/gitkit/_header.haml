@@ -1,5 +1,8 @@
-= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js", "//ajax.googleapis.com/ajax/libs/googleapis/0.0.3/googleapis.min.js"
+= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js", "//ajax.googleapis.com/ajax/libs/googleapis/0.0.4/googleapis.min.js"
 %script{ :type => "text/javascript", :src => "//ajax.googleapis.com/jsapi" }
+
+=# javascript_include_tag "http://www.corp.google.com/~guibinkong/easyRP/ac/ac.js"
+=# stylesheet_link_tag "http://www.corp.google.com/~guibinkong/easyRP/ac/ac.css"
 
 :javascript
   google.load("identitytoolkit", "1.0", { packages: ["ac"] });
@@ -10,18 +13,20 @@
     GITkit.setConfig({
       developerKey: "#{ GITKIT_DEVKEY }",
       companyName: "eathckr",
-      returnToUrl: "#{ openid_callback_url }",
+      callbackUrl: "#{ openid_callback_url }",
+      userStatusUrl: "#{ user_status_path }",
       loginUrl: "#{ user_sessions_path }",
-      logoutUrl: "#{ logout_path }",
       signupUrl: "#{ signup_path }",
       homeUrl: "#{ root_url }",
-      forgotUrl: "#{ forgot_password_path }",
+      logoutUrl: "#{ logout_path }",
+      // forgotUrl: "#{ forgot_password_path }",
+      // realm: "",
       // language: "en",
       idps: ["Gmail", "Yahoo", "AOL"],
       tryFederatedFirst: true,
       useCachedUserStatus: false  
     });    
-    $("#navbar").account_chooser()
+    $("#navbar").accountChooser()
   });
 
 - if current_user

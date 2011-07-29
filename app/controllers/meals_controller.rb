@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
 
   before_filter :require_user
-  before_filter :find_meal, :only => [:edit, :update, :show, :attend, :update_attendance]
+  before_filter :find_meal, :only => [:edit, :update, :show, :destroy, :attend, :update_attendance]
 
   def index
     @user = current_user

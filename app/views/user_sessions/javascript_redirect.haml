@@ -1,14 +1,11 @@
-= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js", "//ajax.googleapis.com/ajax/libs/googleapis/0.0.3/googleapis.min.js"
-%script{ :type => "text/javascript", :src => "//ajax.googleapis.com/jsapi" }
+= javascript_include_tag "https://ajax.googleapis.com/jsapi"
 
 :javascript
-  google.load("identitytoolkit", "1.0", { packages: ["ac"] });
+  google.load("identitytoolkit", "1.0", { packages: ["notify"] });
 
 - if @status == "success"
   :javascript
-    // window.google.identitytoolkit.notifyFederatedSuccess()
-    window.opener.location = "#{meals_url}";
-    window.close();
+    window.google.identitytoolkit.notifyFederatedSuccess({ "email": "#{ @user.email }", "registered": true });
 - else
   :javascript
-    window.google.identitytoolkit.notifyFederatedError()
+    window.google.identitytoolkit.notifyFederatedError("accountMismatch");

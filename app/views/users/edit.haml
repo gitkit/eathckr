@@ -8,3 +8,5 @@
       = f.input :password_confirmation, :label => "Please type your password again."
   = f.buttons do
     = f.commit_button "#{@submit_text.blank? ? "Submit" : @submit_text} &raquo;".html_safe
+    
+.delete_button= button_to 'delete account', @user, :method => :delete, :confirm => "Are you sure?! This can never, ever be undone."

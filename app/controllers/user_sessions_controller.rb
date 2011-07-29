@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
     if params[:password].blank?
       render :json => {
         :registered => !!User.find_by_email(params[:email]),
-        :legacy => false
+        # :legacy => false
       }
     else
       response = {}
@@ -49,41 +49,31 @@ class UserSessionsController < ApplicationController
       'postBody' => request.post? ? request.raw_post : URI.parse(request.url).query
     }
     
-    api_url = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/verifyAssertion?key=#{GITKIT_DEVKEY}"
+    api_url = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/" +
+              "verifyAssertion?key=#{GITKIT_DEVKEY}"
     
     begin
       api_response = RestClient.post(api_url, api_params.to_json, :content_type => :json )
-    
       verified_assertion = JSON.parse(api_response)
-      # render :text => verified_assertion.inspect
-      
+      verified_email = verified_assertion["verifiedEmail"]
+      raise InvalidAssertion unless verified_email
     rescue RestClient::BadRequest => error
-      # error = JSON.parse(e)
-      render :text => error.inspect
-    end
-    
-    verified_email = verified_assertion["verifiedEmail"]
-    
-    if true # status == 'success'!!
-      if @user = User.find_by_email(verified_email)
-        @user.upgrade
-      else
-        @user = User.new(:email => verified_email, :name => verified_assertion["firstName"] + " " + verified_assertion["lastName"],
-                         :password => FEDERATED_PASSWORD, :password_confirmation => FEDERATED_PASSWORD)
-      end
-    end
-    
-    if @user.save
-      @user_session = UserSession.create(:email => verified_email, :password => FEDERATED_PASSWORD)
-      @status = "success"
+      logger.info "\n\n#{ error.inspect }\n\n"
+      logger.info "\n\n#{ api_params.inspect }\n\n"
+      @status = "error"
+    rescue InvalidAssertion
+      @status = "invalidAssertion"      
     else
-      @status = "invalidAssertion" 
+      @user = User.find_by_email(verified_email) || User.new_federated(verified_assertion)
+      if @user.upgrade && UserSession.create_federated(verified_email)
+        @status = "success" 
+      else
+        @status = "failure"
+      end
+    ensure 
+      render 'javascript_redirect', :layout => false
     end
-    
-    logger.info("\n\n#{verified_assertion.inspect}\n\n")
-    
-    render 'javascript_redirect', :layout => false
-    
+        
   end
   
   def user_status

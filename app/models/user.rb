@@ -15,6 +15,13 @@ class User < ActiveRecord::Base
     }
   end
   
+  def self.new_federated(assertion)
+    User.new(:email => assertion["verifiedEmail"] || assertion["email"],
+             :name => assertion["firstName"] + " " + assertion["lastName"],
+             :password => FEDERATED_PASSWORD,
+             :password_confirmation => FEDERATED_PASSWORD)
+  end
+  
   def federated?
     self.valid_password?(FEDERATED_PASSWORD)
   end
@@ -24,6 +31,7 @@ class User < ActiveRecord::Base
       self.password = FEDERATED_PASSWORD
       self.password_confirmation = FEDERATED_PASSWORD
     end
+    self.save
   end
     
   def potential_meals

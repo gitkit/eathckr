@@ -439,6 +439,30 @@ form.button_to input {
   margin: 0;
 }
 
+/* line 109, ../../app/stylesheets/_form.sass */
+.delete_button {
+  float: right;
+}
+/* line 111, ../../app/stylesheets/_form.sass */
+.delete_button form input {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  text-decoration: underline;
+  background-color: white;
+  border: 0 none white;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  -khtml-border-radius: 0;
+  border-radius: 0;
+  color: #bbbbbb;
+  font-size: 0.8em;
+}
+/* line 119, ../../app/stylesheets/_form.sass */
+.delete_button form input:hover {
+  background-color: white;
+}
+
 /* line 1, ../../app/stylesheets/_intro.sass */
 #intro {
   text-align: center;
