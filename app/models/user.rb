@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # acts_as_federated
   
   has_many :attendances, :dependent => :destroy
-  has_many :meals, :through => :attendances, :uniq => true
+  has_many :meals, :through => :attendances, :uniq => true, :dependent => :destroy
   
   def user_data
     {
