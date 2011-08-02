@@ -18,15 +18,5 @@ module ApplicationHelper
         select('event', edge, options_for_select(drop_down_times, event.read_attribute(edge).to_s))
     end
   end
-  
-  def user_data
-    if current_user
-      obj = current_user.user_data
-      obj[:signedIn] = true
-      obj.to_json
-    else
-      {}.to_json
-    end
-  end
-  
+    
 end

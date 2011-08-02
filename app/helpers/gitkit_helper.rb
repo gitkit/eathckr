@@ -6,4 +6,14 @@ module GitkitHelper
     end
   end
   
+  def user_data
+    if current_user
+      obj = current_user.user_data
+      obj[:signedIn] = true
+      obj.to_json
+    else
+      {}.to_json
+    end
+  end
+  
 end

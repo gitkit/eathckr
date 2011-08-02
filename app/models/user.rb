@@ -11,13 +11,19 @@ class User < ActiveRecord::Base
       :displayName => self.name,
       :email => self.email,
       :legacy => true,
-      :photoUrl => ''
+      :photoUrl => self.photo_url
     }
   end
   
   def self.new_federated(assertion)
+    name = begin
+      assertion["firstName"] + " " + assertion["lastName"]
+    rescue
+      assertion["fullName"] || assertion["nickName"]
+    end
     User.new(:email => assertion["verifiedEmail"] || assertion["email"],
-             :name => assertion["firstName"] + " " + assertion["lastName"],
+             :name => name,
+             :photo_url => assertion["profilePicture"],
              :password => FEDERATED_PASSWORD,
              :password_confirmation => FEDERATED_PASSWORD)
   end
